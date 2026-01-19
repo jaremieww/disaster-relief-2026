@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+:root {
+  /* Base brand color for Plate UI components */
+  --brand: oklch(0.623 0.214 259.815);
+}
+
+.dark {
+  --brand: oklch(0.707 0.165 254.624);
+}

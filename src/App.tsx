@@ -21,7 +21,7 @@ function App() {
           <Route path="/home" element={<Home />}  />
           <Route path="/about" element={<About />}  />
           <Route path="*" element={<Home />} />
-          // <Route path="/center" element={<CenterManager />}  />
+          <Route path="/center" element={<CenterManager />}  />
           // <Route path="/center/:id" element={<CenterDetail />} />
           // <Route path="/error" element={<PageNotFound />} />
         </Routes>
