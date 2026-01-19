@@ -1,7 +1,7 @@
 export const Header = () =>{    
     return (
         <div>
-            <a href="/home">Home</a> | <a href="/about">About</a> | <a href="/center">Centers</a>
+            <a href="/home">Home</a> | <a href="/about">About Us</a> | <a href="/center">Centers</a>
         </div>
     );
 }
