@@ -1,7 +1,126 @@
-export const CenterDetail = () => {    
+import type { ICenters } from './types';
+import type { Value } from 'platejs';
+import {
+  BlockquotePlugin,
+  BoldPlugin,
+  H1Plugin,
+  H2Plugin,
+  H3Plugin,
+  ItalicPlugin,
+  UnderlinePlugin,
+} from '@platejs/basic-nodes/react';
+import { BlockquoteElement } from './components/ui/blockquote-node';
+import { Plate, usePlateEditor } from 'platejs/react';
+import { Editor, EditorContainer } from './components/ui/editor';
+import { FixedToolbar } from './components/ui/fixed-toolbar';
+import { H1Element, H2Element, H3Element } from './components/ui/heading-node';
+import { MarkToolbarButton } from './components/ui/mark-toolbar-button';
+import { ToolbarButton } from './components/ui/toolbar'; 
+ 
+
+interface CenterDetailProps {
+    currentCenters: ICenters;
+    selectedCenterId: string | null;
+    setSelectedCenterId: (id: string | null) => void;
+}
+
+export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCenterId }: CenterDetailProps) => { 
+    
+    const initialValue: Value = [
+         {
+            children: [{ text: 'Title' }],
+            type: 'h3',
+        },
+        {
+            children: [{ text: 'This is a quote.' }],
+            type: 'blockquote',
+        },
+        {
+            type: 'p',
+            children: [
+            { text: 'Hello! Try out the ' },
+            { text: 'bold', bold: true },
+            { text: ', ' },
+            { text: 'italic', italic: true },
+            { text: ', and ' },
+            { text: 'underline', underline: true },
+            { text: ' formatting.' },
+            ],
+        },
+    ];
+
+    const editor = usePlateEditor({
+        plugins: [BoldPlugin, 
+            ItalicPlugin, 
+            UnderlinePlugin,
+            H1Plugin.withComponent(H1Element),
+            H2Plugin.withComponent(H2Element),
+            H3Plugin.withComponent(H3Element),
+            BlockquotePlugin.withComponent(BlockquoteElement),
+        ], // Add the mark plugins
+        value: initialValue,         // Set initial content
+    });
+
+    function handleCenterChange(e: React.ChangeEvent<HTMLSelectElement>) {
+        const selectedId = e.target.value;
+        setSelectedCenterId(selectedId);
+    }
+
     return (
-        <div>
-            <h1>Center Detail</h1>
-        </div>
+        <>
+            <h1>Center Detail Page </h1>
+            {/* <p>{currentCenters != null ? `There are ${currentCenters.length} centers available.` : "No centers available."}</p>      */}
+            {/* <ul>
+                {currentCenters != null && currentCenters.map((center) => (
+                    <li key={center.id}>{center.centerName} {center.active ? "(Active)" : "(Inactive)"}</li>
+                ))}
+            </ul> */}
+            <form>
+                <label htmlFor="centerPicker">Select Center:</label>
+                <select id="centerPicker" name="centerPicker" 
+                        onChange={handleCenterChange}   
+                        value={selectedCenterId !== null ? selectedCenterId : ""}
+                        >
+                    {currentCenters == null || currentCenters.length === 0 ? 
+                        <option value="">--No options to choose--</option>
+                    : <option value="">--Choose an option--</option>
+                    }
+                    {currentCenters != null && currentCenters.map((center) => (
+                        center.active ? (
+                            <option key={center.id} value={center.id}>  
+                                {center.centerName}
+                            </option>
+                        ) : null
+                    ))}    
+                </select>
+            </form>
+            <div className="mt-4 p-4 border border-gray-300 rounded">
+                {selectedCenterId != null ? (
+                    <div>
+                        <h2 className="text-2xl font-bold mb-2">{currentCenters.find(center => center.id === selectedCenterId)?.centerName}</h2>        
+                        {/* <p className="mb-2">Display Read Only Plate for center ID: {selectedCenterId}</p> */}
+                        <h4 className="text-xl font-semibold mb-2">Center Details:{currentCenters.find(center => center.id === selectedCenterId)?.detailJSON}</h4>
+                        <Plate editor={editor}>
+                            <FixedToolbar className="justify-start rounded-t-lg">
+                                <ToolbarButton onClick={() => editor.tf.h1.toggle()}>H1</ToolbarButton>
+                                <ToolbarButton onClick={() => editor.tf.h2.toggle()}>H2</ToolbarButton>
+                                <ToolbarButton onClick={() => editor.tf.h3.toggle()}>H3</ToolbarButton>
+                                <ToolbarButton onClick={() => editor.tf.blockquote.toggle()}>Quote</ToolbarButton>
+                                <MarkToolbarButton nodeType="bold" tooltip="Bold (⌘+B)">B</MarkToolbarButton>
+                                <MarkToolbarButton nodeType="italic" tooltip="Italic (⌘+I)">I</MarkToolbarButton>
+                                <MarkToolbarButton nodeType="underline" tooltip="Underline (⌘+U)">U</MarkToolbarButton>
+                            </FixedToolbar>
+                            <EditorContainer>
+                                <Editor placeholder="This is going to be Center Details" />
+                            </EditorContainer>
+                        </Plate>
+                     </div>
+                ) : (
+                    <p>Please select a center to view its details.</p>
+                )}
+            </div>
+
+            <a href="CenterManager">Go to Center Manager Page</a>
+        </>
     );
 }

@@ -49,3 +49,10 @@
 .dark {
   --brand: oklch(0.707 0.165 254.624);
 }
+
+.banner {
+  background-color: #f0f8ff;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 8px;
+}

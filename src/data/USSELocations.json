@@ -1,0 +1,188 @@
+{
+    "title" : "USSE State Stake Locations",
+    "description" : "Locations of USSE Stake Centers by State",
+    "Locations" :[
+       { "StateID": "FL",
+          "State": "Florida",
+          "Stakes": [
+              {
+                  "Name": "Miami Stake Center",
+                  "Address": "123 Ocean Dr, Miami, FL",
+                  "Latitude": 25.7617,
+                  "Longitude": -80.1918
+              },
+              {
+                  "Name": "Tampa Stake Center",
+                  "Address": "456 Bay St, Tampa, FL",
+                  "Latitude": 27.9506,
+                  "Longitude": -82.4572
+              },
+                {
+                    "Name": "Orlando Stake Center",
+                    "Address": "789 Lake Ave, Orlando, FL",
+                    "Latitude": 28.5383,
+                    "Longitude": -81.3792
+                },
+                {
+                    "Name": "Jacksonville Stake Center",
+                    "Address": "101 River Rd, Jacksonville, FL",
+                    "Latitude": 30.3322,
+                    "Longitude": -81.6557
+                },
+                {
+                    "Name": "Gainesville Stake Center",
+                    "Address": "202 University Blvd, Gainesville, FL",
+                    "Latitude": 29.6516,
+                    "Longitude": -82.3248
+                },  
+                {
+                    "Name": "Pensacola Stake Center",
+                    "Address": "303 Beach St, Pensacola, FL",
+                    "Latitude": 30.4213,
+                    "Longitude": -87.2169
+                }, 
+                {
+                    "Name": "Fort Lauderdale Stake Center",
+                    "Address": "404 Sunrise Blvd, Fort Lauderdale, FL",
+                    "Latitude": 26.1224,
+                    "Longitude": -80.1373
+                },
+                {
+                    "Name": "West Palm Beach Stake Center",
+                    "Address": "505 Palm St, West Palm Beach, FL",
+                    "Latitude": 26.7153,
+                    "Longitude": -80.0534
+                },
+                {
+                    "Name": "Sarasota Stake Center",
+                    "Address": "606 Gulf St, Sarasota, FL",
+                    "Latitude": 27.3364,
+                    "Longitude": -82.5307
+                },
+                {
+                    "Name": "Naples Stake Center",
+                    "Address": "707 Vine St, Naples, FL",
+                    "Latitude": 26.1420,
+                    "Longitude": -81.7948
+                },
+                {
+                    "Name": "Daytona Beach Stake Center",
+                    "Address": "808 Ocean Ave, Daytona Beach, FL",
+                    "Latitude": 29.2108,
+                    "Longitude": -81.0228
+                },
+                {
+                    "Name": "Fort Myers Stake Center",
+                    "Address": "909 River St, Fort Myers, FL",
+                    "Latitude": 26.6406,
+                    "Longitude": -81.8723
+                },
+                {
+                    "Name": "Lakeland Stake Center",
+                    "Address": "111 Lake St, Lakeland, FL",
+                    "Latitude": 28.0395,
+                    "Longitude": -81.9498
+                },
+                {
+                    "Name": "Ocala Stake Center",
+                    "Address": "222 Forest St, Ocala, FL",
+                    "Latitude": 29.1872,
+                    "Longitude": -82.1401
+                },
+                {
+                    "Name": "Melbourne Stake Center",
+                    "Address": "333 Space St, Melbourne, FL",
+                    "Latitude": 28.0836,
+                    "Longitude": -80.6081
+                },
+                {
+                    "Name": "Vero Beach Stake Center",
+                    "Address": "444 Oceanview St, Vero Beach, FL",
+                    "Latitude": 27.6386,
+                    "Longitude": -80.3973
+                },
+                {
+                    "Name": "Port St. Lucie Stake Center",
+                    "Address": "555 Riverfront St, Port St. Lucie, FL",
+                    "Latitude": 27.2730,
+                    "Longitude": -80.3582
+                },
+                {
+                    "Name": "Palm Bay Stake Center",
+                    "Address": "666 Coastal St, Palm Bay, FL",
+                    "Latitude": 28.0345,
+                    "Longitude": -80.5887
+                },
+                {
+                    "Name": "Deltona Stake Center",
+                    "Address": "777 Lakeside St, Deltona, FL",
+                    "Latitude": 28.9002,
+                    "Longitude": -81.2637
+                },
+                {
+                    "Name": "Winter Haven Stake Center",
+                    "Address": "888 Citrus St, Winter Haven, FL",
+                    "Latitude": 28.0228,
+                    "Longitude": -81.7329
+                },
+                {
+                    "Name": "Cocoa Beach Stake Center",
+                    "Address": "999 Shoreline St, Cocoa Beach, FL",
+                    "Latitude": 28.3206,
+                    "Longitude": -80.6076
+                }
+          ]
+       },
+       { "StateID": "GA",
+          "State": "Georgia",
+            "Stakes": [
+                {
+                    "Name": "Atlanta Stake Center",
+                    "Address": "123 Peachtree St, Atlanta, GA",
+                    "Latitude": 33.7490,
+                    "Longitude": -84.3880
+                },
+                {
+                    "Name": "Savannah Stake Center",
+                    "Address": "456 River St, Savannah, GA",
+                    "Latitude": 32.0809,
+                    "Longitude": -81.0912
+                }
+            ]
+       },
+       { "StateID": "AL",
+          "State": "Alabama",
+            "Stakes": [
+                {
+                    "Name": "Birmingham Stake Center",
+                    "Address": "789 Vulcan St, Birmingham, AL",
+                    "Latitude": 33.5186,
+                    "Longitude": -86.8104
+                },
+                {
+                    "Name": "Montgomery Stake Center",
+                    "Address": "101 Capital St, Montgomery, AL",
+                    "Latitude": 32.3668,
+                    "Longitude": -86.3000
+                }
+            ]
+       },
+       { "StateID": "LA",
+          "State": "Louisiana",
+            "Stakes": [
+                {
+                    "Name": "New Orleans Stake Center",
+                    "Address": "123 River St, New Orleans, LA",
+                    "Latitude": 29.9511,
+                    "Longitude": -90.0715
+                },
+                {
+                    "Name": "Baton Rouge Stake Center",
+                    "Address": "456 Bayou St, Baton Rouge, LA",
+                    "Latitude": 30.4584,
+                    "Longitude": -91.1403
+                }
+            ]
+       }
+    ]
+}

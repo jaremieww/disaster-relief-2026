@@ -1,3 +1,16 @@
+/* @import "tailwindcss";
+@config "./tailwind.config.js"; */
+/* 
+---break--- */
+/* @plugin "tailwind-scrollbar-hide";
+@import "tw-animate-css"; */
+/* 
+---break--- */
+/* @custom-variant dark (&:is(.dark *)); */
+
+/* 
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -100,8 +113,6 @@ button:focus-visible {
   }
 }
 
-@import "tailwindcss";
-
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -182,7 +193,7 @@ button:focus-visible {
   --sidebar-ring: oklch(0.552 0.016 285.938);
   --brand: oklch(0.707 0.165 254.624);
 }
-
+ 
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -191,3 +202,41 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
+*/
+
+/* 
+---break--- */
+
+/* :root {
+
+  --highlight: oklch(0.852 0.199 91.936);
+} */
+
+/* 
+---break--- */
+/* 
+.dark {
+
+  --highlight: oklch(0.852 0.199 91.936);
+} */
+
+/* 
+---break--- */
+
+/* @theme inline {
+
+  --color-highlight: var(--highlight);
+} */
+
+/* 
+---break--- */
+/* 
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+} */
+
