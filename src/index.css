@@ -1,14 +1,17 @@
-/* @import "tailwindcss";
-@config "./tailwind.config.js"; */
-/* 
----break--- */
-/* @plugin "tailwind-scrollbar-hide";
-@import "tw-animate-css"; */
-/* 
----break--- */
-/* @custom-variant dark (&:is(.dark *)); */
+@import "tailwindcss";
+
+/* @config "./tailwind.config.js"; */
+
 
 /* 
+---break--- */
+@plugin "tailwind-scrollbar-hide";
+@import "tw-animate-css";
+/* 
+---break--- */
+@custom-variant dark (&:is(.dark *));
+
+/*  
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {
@@ -98,7 +101,7 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
+} */
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -202,35 +205,35 @@ button:focus-visible {
     @apply bg-background text-foreground;
   }
 }
-*/
+
 
 /* 
 ---break--- */
 
-/* :root {
+:root {
 
   --highlight: oklch(0.852 0.199 91.936);
-} */
+}
 
 /* 
 ---break--- */
-/* 
+
 .dark {
 
   --highlight: oklch(0.852 0.199 91.936);
-} */
+}
 
 /* 
 ---break--- */
 
-/* @theme inline {
+@theme inline {
 
   --color-highlight: var(--highlight);
-} */
+}
 
 /* 
 ---break--- */
-/* 
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
@@ -238,5 +241,5 @@ button:focus-visible {
   body {
     @apply bg-background text-foreground;
   }
-} */
+}
 

@@ -68,38 +68,40 @@ export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCent
 
     return (
         <>
-            <h1>Center Detail Page </h1>
+            {/* <h1>Center Detail Page </h1> */}
             {/* <p>{currentCenters != null ? `There are ${currentCenters.length} centers available.` : "No centers available."}</p>      */}
             {/* <ul>
                 {currentCenters != null && currentCenters.map((center) => (
                     <li key={center.id}>{center.centerName} {center.active ? "(Active)" : "(Inactive)"}</li>
                 ))}
             </ul> */}
-            <form>
-                <label htmlFor="centerPicker">Select Center:</label>
-                <select id="centerPicker" name="centerPicker" 
-                        onChange={handleCenterChange}   
-                        value={selectedCenterId !== null ? selectedCenterId : ""}
-                        >
-                    {currentCenters == null || currentCenters.length === 0 ? 
-                        <option value="">--No options to choose--</option>
-                    : <option value="">--Choose an option--</option>
-                    }
-                    {currentCenters != null && currentCenters.map((center) => (
-                        center.active ? (
-                            <option key={center.id} value={center.id}>  
-                                {center.centerName}
-                            </option>
-                        ) : null
-                    ))}    
-                </select>
-            </form>
-            <div className="mt-4 p-4 border border-gray-300 rounded">
+            <div className="w-full mt-2 p-4 border border-gray-500 rounded">
+                <form>
+                    <label htmlFor="centerPicker">Select Center:</label>
+                    <select id="centerPicker" name="centerPicker" 
+                            onChange={handleCenterChange}   
+                            value={selectedCenterId !== null ? selectedCenterId : ""}
+                            >
+                        {currentCenters == null || currentCenters.length === 0 ? 
+                            <option value="">--No options to choose--</option>
+                        : <option value="">--Choose an option--</option>
+                        }
+                        {currentCenters != null && currentCenters.map((center) => (
+                            center.active ? (
+                                <option key={center.id} value={center.id}>  
+                                    {center.centerName}
+                                </option>
+                            ) : null
+                        ))}    
+                    </select>
+                </form>
+            </div>
+            <div className="mt-2 border border-black">
                 {selectedCenterId != null ? (
-                    <div>
-                        <h2 className="text-2xl font-bold mb-2">{currentCenters.find(center => center.id === selectedCenterId)?.centerName}</h2>        
+                    <div >
+                        {/* <h2 className="text-2xl font-bold mb-2">{currentCenters.find(center => center.id === selectedCenterId)?.centerName}</h2>         */}
                         {/* <p className="mb-2">Display Read Only Plate for center ID: {selectedCenterId}</p> */}
-                        <h4 className="text-xl font-semibold mb-2">Center Details:{currentCenters.find(center => center.id === selectedCenterId)?.detailJSON}</h4>
+                        {/* <h4 className="text-xl font-semibold mb-2">Center Details:{currentCenters.find(center => center.id === selectedCenterId)?.detailJSON}</h4> */}
                         <Plate editor={editor}>
                             <FixedToolbar className="justify-start rounded-t-lg">
                                 <ToolbarButton onClick={() => editor.tf.h1.toggle()}>H1</ToolbarButton>
@@ -119,8 +121,6 @@ export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCent
                     <p>Please select a center to view its details.</p>
                 )}
             </div>
-
-            <a href="CenterManager">Go to Center Manager Page</a>
         </>
     );
 }
