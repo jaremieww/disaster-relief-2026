@@ -27,7 +27,8 @@
     /* Tailwind CSS */
     "baseUrl": ".",
     "paths": {
-      "~/*": ["src/*"]
+      "~/*": ["src/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": ["src"]

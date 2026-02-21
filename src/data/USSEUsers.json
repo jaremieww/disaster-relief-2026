@@ -1,0 +1,34 @@
+{
+    "Users": [
+        {
+        "id": "1",
+        "name": "John Doe",
+        "email": "john.doe@example.com",
+        "role": "Administrator"
+        },
+        {
+            "id": "2",
+            "name": "Jane Smith",
+            "email": "jane.smith@example.com",
+            "role": "Manager"
+        },
+        {
+            "id": "3",
+            "name": "Emily Johnson",
+            "email": "emily.johnson@example.com",
+            "role": "Volunteer"
+        },
+        {
+            "id": "4",
+            "name": "Michael Brown",
+            "email": "michael.brown@example.com",
+            "role": "Volunteer"
+        },
+        {
+            "id": "5",
+            "name": "Sarah Davis",
+            "email": "sarah.davis@example.com",
+            "role": "Volunteer"
+        }
+    ]   
+}

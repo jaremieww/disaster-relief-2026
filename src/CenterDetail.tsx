@@ -12,19 +12,21 @@ import {
 import { BlockquoteElement } from './components/ui/blockquote-node';
 import { Plate, usePlateEditor } from 'platejs/react';
 import { Editor, EditorContainer } from './components/ui/editor';
-import { FixedToolbar } from './components/ui/fixed-toolbar';
+// import { FixedToolbar } from './components/ui/fixed-toolbar';
 import { H1Element, H2Element, H3Element } from './components/ui/heading-node';
-import { MarkToolbarButton } from './components/ui/mark-toolbar-button';
-import { ToolbarButton } from './components/ui/toolbar'; 
+// import { MarkToolbarButton } from './components/ui/mark-toolbar-button';
+// import { ToolbarButton } from './components/ui/toolbar'; 
  
 
 interface CenterDetailProps {
     currentCenters: ICenters;
     selectedCenterId: string | null;
-    setSelectedCenterId: (id: string | null) => void;
+    chooseCenter: (id: string) => void;
+    //setSelectedCenterId: (id: string | null) => void;
+    currentStakes: IStakes | null;
 }
 
-export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCenterId }: CenterDetailProps) => { 
+export const CenterDetail = ({ currentCenters, selectedCenterId, chooseCenter, currentStakes }: CenterDetailProps) => { 
     
     const initialValue: Value = [
          {
@@ -49,7 +51,7 @@ export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCent
         },
     ];
 
-    const editor = usePlateEditor({
+        const editor = usePlateEditor({
         plugins: [BoldPlugin, 
             ItalicPlugin, 
             UnderlinePlugin,
@@ -58,12 +60,21 @@ export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCent
             H3Plugin.withComponent(H3Element),
             BlockquotePlugin.withComponent(BlockquoteElement),
         ], // Add the mark plugins
-        value: initialValue,         // Set initial content
+            value: () => {
+            // const savedValue = localStorage.getItem('installation-react-demo');
+            // return savedValue ? JSON.parse(savedValue) : initialValue;
+            const realValue = currentCenters.find(center => center.id === selectedCenterId)?.detailJSON;
+            return realValue ? JSON.parse(realValue) : initialValue;
+        },
     });
+
+    // export default function MyStaticPage() {
+    //    return <PlateStatic editor={editor} />;
+    // }
 
     function handleCenterChange(e: React.ChangeEvent<HTMLSelectElement>) {
         const selectedId = e.target.value;
-        setSelectedCenterId(selectedId);
+        chooseCenter(selectedId);
     }
 
     return (
@@ -83,8 +94,8 @@ export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCent
                             value={selectedCenterId !== null ? selectedCenterId : ""}
                             >
                         {currentCenters == null || currentCenters.length === 0 ? 
-                            <option value="">--No options to choose--</option>
-                        : <option value="">--Choose an option--</option>
+                            <option value="">--No centers to choose--</option>
+                        : <option value="">--Choose an center--</option>
                         }
                         {currentCenters != null && currentCenters.map((center) => (
                             center.active ? (
@@ -96,14 +107,34 @@ export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCent
                     </select>
                 </form>
             </div>
+            <div >
+                <div className="mt-2 border border-black p-2 rounded-lg">
+                    {selectedCenterId != null ? (
+                        <ul>
+                            {currentCenters.find(center => center.id === selectedCenterId)?.assignedStakes.length === 0 ? (     
+                                <li>No stakes assigned to this center.</li>
+                            ) : (
+                                currentCenters.find(center => center.id === selectedCenterId)?.assignedStakes.map((stakeUnitNumber) => {
+                                    const stake = currentStakes?.find(s => s.unitNumber === stakeUnitNumber);
+                                    return stake ? (
+                                        <li key={stake.unitNumber}>{stake.stakeName}</li>
+                                    ) : null;
+                                })
+                            )}
+                        </ul>       
+                    ) : (
+                        <p>Please select a center to view its assigned stakes.</p>
+                    )}
+                </div>
+            </div>
+            {/* <div className="mt-2 border border-black">
+                <PlateStatic editor={editor} />;
+            </div> */}
             <div className="mt-2 border border-black">
                 {selectedCenterId != null ? (
                     <div >
-                        {/* <h2 className="text-2xl font-bold mb-2">{currentCenters.find(center => center.id === selectedCenterId)?.centerName}</h2>         */}
-                        {/* <p className="mb-2">Display Read Only Plate for center ID: {selectedCenterId}</p> */}
-                        {/* <h4 className="text-xl font-semibold mb-2">Center Details:{currentCenters.find(center => center.id === selectedCenterId)?.detailJSON}</h4> */}
-                        <Plate editor={editor}>
-                            <FixedToolbar className="justify-start rounded-t-lg">
+                       <Plate editor={editor}>
+                            {/* <FixedToolbar className="justify-start rounded-t-lg">
                                 <ToolbarButton onClick={() => editor.tf.h1.toggle()}>H1</ToolbarButton>
                                 <ToolbarButton onClick={() => editor.tf.h2.toggle()}>H2</ToolbarButton>
                                 <ToolbarButton onClick={() => editor.tf.h3.toggle()}>H3</ToolbarButton>
@@ -111,7 +142,7 @@ export const CenterDetail = ({ currentCenters, selectedCenterId, setSelectedCent
                                 <MarkToolbarButton nodeType="bold" tooltip="Bold (⌘+B)">B</MarkToolbarButton>
                                 <MarkToolbarButton nodeType="italic" tooltip="Italic (⌘+I)">I</MarkToolbarButton>
                                 <MarkToolbarButton nodeType="underline" tooltip="Underline (⌘+U)">U</MarkToolbarButton>
-                            </FixedToolbar>
+                            </FixedToolbar> */}
                             <EditorContainer>
                                 <Editor placeholder="This is going to be Center Details" />
                             </EditorContainer>
